@@ -8,6 +8,7 @@ public class HitEntity : MonoBehaviour
     
     private float timer = 0.0f;
     private float maxtimer = 2.0f;
+    
 
 
 
@@ -25,7 +26,7 @@ public class HitEntity : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Transform parent = other.transform.parent;
             if (parent.TryGetComponent(out EntityHealth health))

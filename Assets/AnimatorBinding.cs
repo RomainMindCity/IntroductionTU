@@ -13,9 +13,13 @@ public class AnimatorBinding : MonoBehaviour
     private string BACKWARD = "Move_Backward";
     private string LEFT = "Move_Left";
     private string RIGHT = "Move_Right";
+    private string ATTACK = "Attack";
+    private bool isAttacking = false;
     GameObject playerGameObject;
     Vector2 joystickDirection;
     [SerializeField] PlayerMove playerMove;
+    
+
 
 
 
@@ -39,7 +43,7 @@ public class AnimatorBinding : MonoBehaviour
             ChangeAnimationState(FORWARD);
             //Debug.Log("Move_Forward");
         }
-        else if (joystickDirection.y == 0 && joystickDirection.x == 0)
+        else if (joystickDirection.y == 0 && joystickDirection.x == 0 && !isAttacking)
         {
             ChangeAnimationState(IDLE);
             //Debug.LogWarning("Idle_Normal_SwordAndShield 0");
@@ -58,10 +62,22 @@ public class AnimatorBinding : MonoBehaviour
         {
             ChangeAnimationState(RIGHT);
             //Debug.Log("Move_Right");
-        }
+        } 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isAttacking = true;
+            ChangeAnimationState(ATTACK);
+            StartCoroutine (Attacking());
+        } 
     }
 
 
+    IEnumerator Attacking()
+    {
+        yield  return new WaitForSeconds(0.533f);
+        isAttacking = false;
+        StopCoroutine(Attacking());
+    }
 
     void ChangeAnimationState(string newAnimation)
     {
