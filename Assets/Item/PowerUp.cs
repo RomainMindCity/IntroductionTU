@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class PowerUp : Item
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] int _powerUpAmount;
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider other)
     {
-        
+        if (other.TryGetComponent(out EntityHealth health))
+        {
+            health.PowerUp(_powerUpAmount);
+        }
     }
 }
