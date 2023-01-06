@@ -94,7 +94,6 @@ public class PlayerMove : MonoBehaviour
     {
         StopCoroutine(MovementRoutine);
         JoystickDirection = Vector2.zero;
-        OnStopMove?.Invoke();
         Debug.Log($"Stop Move : {obj.ReadValue<Vector2>()}");
     }
 
