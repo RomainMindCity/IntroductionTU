@@ -13,10 +13,24 @@ public class HealthUI : MonoBehaviour
 
     int CachedMaxHealth { get; set; }
 
-    void UpdateSlider(int newHealthValue)
+    public void UpdateSlider(int newHealthValue)
     {
         _slider.value = newHealthValue;
         _text.text = $"{newHealthValue} / {CachedMaxHealth}";
     }
+
+    public void UpdateSlideCMH(int newMaxHealthValue)
+    {
+        _slider.maxValue = newMaxHealthValue;
+        _text.text = $"{_playerHealth.CurrentHealth} / {newMaxHealthValue}";
+        CachedMaxHealth = newMaxHealthValue;
+    }
+
+    void Start()
+    {
+        CachedMaxHealth = _playerHealth.CurrentHealth;
+        UpdateSlider(_playerHealth.CurrentHealth);
+    }   
+
 
 }

@@ -32,32 +32,32 @@ public class AnimatorBinding : MonoBehaviour
     void Update()
     {
         joystickDirection = playerMove.JoystickDirection;
-        Debug.Log(joystickDirection.x);
+        //Debug.Log(joystickDirection.x);
 
         if (joystickDirection.y > 0)
         {
             ChangeAnimationState(FORWARD);
-            Debug.Log("Move_Forward");
+            //Debug.Log("Move_Forward");
         }
         else if (joystickDirection.y == 0 && joystickDirection.x == 0)
         {
             ChangeAnimationState(IDLE);
-            Debug.LogWarning("Idle_Normal_SwordAndShield 0");
+            //Debug.LogWarning("Idle_Normal_SwordAndShield 0");
         }
         else if (joystickDirection.y < 0)
         {
             ChangeAnimationState(BACKWARD);
-            Debug.Log("Move_Backward");
+            //Debug.Log("Move_Backward");
         }
         else if (joystickDirection.x < 0)
         {
-             ChangeAnimationState(LEFT);
-             Debug.Log("Move_Left");
+            ChangeAnimationState(LEFT);
+            //Debug.Log("Move_Left");
         } 
         else if (joystickDirection.x > 0)
         {
             ChangeAnimationState(RIGHT);
-            Debug.Log("Move_Right");
+            //Debug.Log("Move_Right");
         }
     }
 
